@@ -19,6 +19,7 @@
           </div>
           <div class="price_text"><span>￥</span>188</div>
           <div class="price_add">
+            <i class="icon iconfont icon-zengjia"></i>
           </div>
         </div>
       </div>
@@ -42,7 +43,7 @@ export default {
       ]
     }
   },
-  components:{
+  components: {
     Type
   }
 }
@@ -122,7 +123,14 @@ export default {
           position: absolute;
           bottom: -45px;
           right:-30px;
-          background-image: url("../../common/images/home_add@2x.png");
+          i{
+            font-size: 70px;
+            &:before{
+              background: -webkit-linear-gradient(180deg, #ff3660, #ff8887);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
         }
 
       }
