@@ -117,12 +117,10 @@ export default {
           }
         }
         .price_add{
-          width: 130px;
-          height: 120px;
           background-size: cover;
           position: absolute;
-          bottom: -45px;
-          right:-30px;
+          bottom: -20px;
+          right:0px;
           i{
             font-size: 70px;
             &:before{
@@ -132,7 +130,6 @@ export default {
             }
           }
         }
-
       }
     }
   }

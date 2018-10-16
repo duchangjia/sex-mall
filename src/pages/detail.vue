@@ -21,7 +21,7 @@
           <p class="type_intru">它的模样没什么差别，而且更加漂亮功能也更加丰富。由于材质的问题，给女性多重关怀，更充分的情趣。</p>
           <div class="price">
             <span><a>￥</a>128.90</span>
-            <div>加入购物车</div>
+            <div class="btn">加入购物车</div>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ export default {
     }
     .price{
       display: flex;
-      position: relative;
+      justify-content: space-between;
       span{
         color: #ff3660;
         font-size: 48px;
@@ -138,17 +138,13 @@ export default {
         }
       }
       div{
-        background-image: url("../common/images/home_settlement@2x.png");
-        background-size: 100%;
-        width: 250px;
-        height: 124px;
+        width: 240px;
+        height: 70px;
         font-size: 30px;
         color: white;
-        line-height: 105px;
+        line-height: 70px;
         text-align: center;
-        position: absolute;
-        right:-25px;
-        top:10px;
+        margin-top: 28px;
       }
     }
   }

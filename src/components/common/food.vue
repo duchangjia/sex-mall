@@ -6,7 +6,7 @@
         <a class="common">（0件商品）</a>
       </div>
       <div class="fooder_right">
-        <div class="footer_btn">去结算</div>
+        <div class="footer_btn btn">去结算</div>
       </div>
     </div>
   </div>
@@ -46,16 +46,10 @@ export default {
       float: right;
       position: relative;
       .footer_btn{
-        width:250px;
-        height: 124px;
-        background-image: url("../../common/images/home_settlement@2x.png");
-        background-size: cover;
-        position: absolute;
+        width:200px;
+        height: 70px;
+        margin-top: 14px;
         right: -25px;
-        font-size: 30px;
-        color:white;
-        text-align: center;
-        line-height: 108px;
       }
     }
   }

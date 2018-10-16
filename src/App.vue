@@ -33,4 +33,12 @@ html{
   background-color: #ff3660!important;
   border-radius: 8px !important;
 }
+  .btn{
+    font-size: 30px;
+    color:white;
+    text-align: center;
+    line-height: 70px;
+    background: linear-gradient(to left, #ff3660, #ff8887);
+    border-radius: 35px;
+  }
 </style>

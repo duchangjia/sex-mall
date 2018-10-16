@@ -17,7 +17,23 @@ let routers = new Router({
       name: 'index',
       component: resolve => require(['@/pages/detail'], resolve),
       meta: {
-        title: '特色酒店'
+        title: '产品详情'
+      }
+    },
+    {
+      path: '/pay-type',
+      name: 'index',
+      component: resolve => require(['@/pages/pay-type'], resolve),
+      meta: {
+        title: '支付成功'
+      }
+    },
+    {
+      path: '/pay-seccess',
+      name: 'index',
+      component: resolve => require(['@/pages/pay-seccess'], resolve),
+      meta: {
+        title: '支付成功'
       }
     }
   ]
