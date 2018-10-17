@@ -1,13 +1,41 @@
 <template>
-    <div class="pay_type box_shadow widthAuto">
-      <h6>支付方式</h6>
-      <div class="pay_select">
-        <div class="pay">
-          <div>
-            <i class="icon iconfont icon-zhifubao"></i>
-            <span>支付宝</span>
+    <div class="pay_type">
+      <div class="box_shadow widthAuto">
+        <h6>支付方式</h6>
+        <div class="pay_select">
+          <div class="pay">
+            <div>
+              <i class="icon iconfont icon-zhifubao"></i>
+              <span>支付宝</span>
+            </div>
+            <i class="icon iconfont icon-queding maincolor"></i>
           </div>
-          <i class="icon iconfont icon-queding"></i>
+          <div class="pay">
+            <div>
+              <i class="icon iconfont icon-weixin-copy weixi"></i>
+              <span>微信</span>
+            </div>
+            <i class="icon iconfont icon-queding"></i>
+          </div>
+        </div>
+      </div>
+      <div class="box_shadow widthAuto" style="margin-top: 10px">
+        <h6>支付方式</h6>
+        <div class="pay_select">
+          <div class="pay">
+            <div>
+              <i class="icon iconfont icon-zhifubao"></i>
+              <span>支付宝</span>
+            </div>
+            <i class="icon iconfont icon-queding maincolor"></i>
+          </div>
+          <div class="pay">
+            <div>
+              <i class="icon iconfont icon-weixin-copy weixi"></i>
+              <span>微信</span>
+            </div>
+            <i class="icon iconfont icon-queding"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -33,17 +61,28 @@ export default {
       display: flex;
       font-size: 36px;
       justify-content: space-between;
+      padding:0px 36px;
+      line-height: 110px;
       div{
-        display: -webkit-box;
-        -webkit-box-align: center;
+        display: flex;
         i{
           font-size: 63px;
+          color: #01aaed;
+        }
+        .weixi{
+          color: #3ab133;
         }
         span{
+          color:#666;
+          padding-left:37px;
         }
       }
       i{
         font-size: 44px;
+        color:#d1d1d1;
+      }
+      .maincolor{
+        color:#ff3660
       }
     }
   }
