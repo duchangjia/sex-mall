@@ -2,11 +2,11 @@
   <div class="fooder">
     <div class="widthAuto">
       <div class="fooder_left">合计:
-        <span class="common">¥ 0</span>
-        <a class="common">（0件商品）</a>
+        <span class="common">¥ {{price}}</span>
+        <a class="common">（{{count}}件商品）</a>
       </div>
       <div class="fooder_right">
-        <div class="footer_btn btn">去结算</div>
+        <div class="footer_btn btn" @click="Settlement" v-bind:class="{'disabled':count===0}">去结算</div>
       </div>
     </div>
   </div>
@@ -14,7 +14,22 @@
 
 <script>
 export default {
-  name: 'food'
+  name: 'food',
+  computed: {
+    price () {
+      return this.$store.state.cart.price
+    },
+    count () {
+      return this.$store.state.cart.count
+    }
+  },
+  methods: {
+    Settlement () {
+      if (this.count > 0) {
+        this.$router.push({path: 'pay-type'})
+      }
+    }
+  }
 }
 </script>
 
@@ -50,6 +65,9 @@ export default {
         height: 70px;
         margin-top: 14px;
         right: -25px;
+      }
+      .disabled{
+        background: #e5e5e5;
       }
     }
   }

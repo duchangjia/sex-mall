@@ -1,6 +1,6 @@
 <template>
     <div class="pay_type">
-      <div class="box_shadow widthAuto">
+      <!--<div class="box_shadow widthAuto">
         <h6>支付方式</h6>
         <div class="pay_select">
           <div class="pay">
@@ -18,7 +18,7 @@
             <i class="icon iconfont icon-queding"></i>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="box_shadow widthAuto" style="margin-top: 10px">
         <h6>支付方式</h6>
         <div class="pay_select">
@@ -27,14 +27,14 @@
               <i class="icon iconfont icon-zhifubao"></i>
               <span>支付宝</span>
             </div>
-            <i class="icon iconfont icon-queding maincolor"></i>
+            <i class="icon iconfont icon-queding" :class="{'maincolor':paySelect===0}" @click="typeBtnZF"></i>
           </div>
           <div class="pay">
             <div>
               <i class="icon iconfont icon-weixin-copy weixi"></i>
               <span>微信</span>
             </div>
-            <i class="icon iconfont icon-queding"></i>
+            <i class="icon iconfont icon-queding" :class="{'maincolor':paySelect===1}" @click="typeBtnWX"></i>
           </div>
         </div>
       </div>
@@ -43,7 +43,20 @@
 
 <script>
 export default {
-  name: 'pay_type'
+  name: 'pay_type',
+  data () {
+    return {
+      paySelect: 0
+    }
+  },
+  methods: {
+    typeBtnZF () {
+      this.paySelect = 0
+    },
+    typeBtnWX () {
+      this.paySelect = 1
+    }
+  }
 }
 </script>
 

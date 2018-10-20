@@ -1,25 +1,22 @@
 <template>
   <div>
-    <div class="goods box_shadow" v-for="(item,key) in this.goodsList" :key="key" :class="{margin_t:key!==0}">
+    <div class="goods box_shadow" @click="linkDetail(item)" v-for="(item,key) in this.goodsList" :key="key" :class="{margin_t:key!==0}">
       <div class="goods_mark">
-        <span>{{key+1}}号门</span>
+        <span>{{item.code}}号门</span>
       </div>
       <div class="product_content">
         <div class="pic">
-
+          <img :src="item.url" alt="">
         </div>
         <div class="text">
           <h6 class="text_title">{{item.name}}</h6>
           <p class="text_instr">{{item.instruction}}</p>
           <div class="product_type">
             <type :typeArr="item.type"></type>
-            <!--<span class="type" v-for="(em,index) in item.type" :key="index" :class="[em===1?'type_01':em===2?'type_02':'type_03',index!==0?'margin_left':'']">{{em===1?'调情':em===2?'加强':'仿真'}}</span>-->
-            <!--<span class="type type_02">加强</span>
-            <span class="type type_03">仿真</span>-->
           </div>
-          <div class="price_text"><span>￥</span>188</div>
+          <div class="price_text"><span>￥</span>{{item.price}}</div>
           <div class="price_add">
-            <i class="icon iconfont icon-zengjia"></i>
+            <cart-control :item="item" v-if="item"></cart-control>
           </div>
         </div>
       </div>
@@ -29,22 +26,47 @@
 
 <script>
 import Type from './type'
+import CartControl from './cartcontrol'
 export default {
   name: 'goods',
+  props: {
+    goodsList: {
+      type: Array
+    }
+  },
   data () {
     return {
-      goodsList: [
+      /* goodsList: [
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188},
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188},
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 3], price: 188},
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 2], price: 188},
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188},
         {name: '电动延时环', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188}
-      ]
+      ] */
     }
   },
   components: {
-    Type
+    Type,
+    CartControl
+  },
+  mounted () {
+  },
+  methods: {
+    linkDetail (item) {
+      this.$router.push({path: 'detail', query: item})
+    }
+    /* increase (price, key) {
+      this.$store.commit('INCREASE')
+      this.$store.commit('PRICE_INCREASE', price)
+      console.log(this.goodsList)
+      this.goodsList[key].countNum++
+    },
+    reduce (price, key) {
+      this.$store.commit('REDUCE')
+      this.$store.commit('PRICE_REDUCE', price)
+      this.goodsList[key].countNum--
+    } */
   }
 }
 </script>
@@ -71,7 +93,7 @@ export default {
       text-align: left;
       span{
         color: white;
-        line-height: 80px;
+        line-height: 90px;
         margin-left: 32px;
       }
     }
@@ -83,8 +105,12 @@ export default {
       .pic{
         width: 220px;
         height: 240px;
-        background-color: #ccc;
+        background-color: white;
         float: left;
+        img{
+          width: 100%;
+          vertical-align:baseline;
+        }
       }
       .text{
         float: left;
@@ -121,14 +147,6 @@ export default {
           position: absolute;
           bottom: -20px;
           right:0px;
-          i{
-            font-size: 70px;
-            &:before{
-              background: -webkit-linear-gradient(180deg, #ff3660, #ff8887);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-            }
-          }
         }
       }
     }
