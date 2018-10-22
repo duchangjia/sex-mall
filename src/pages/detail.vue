@@ -12,22 +12,27 @@
       <div class="detail_intru box_shadow widthAuto">
         <div class="detail_con">
           <div class="detail_intru_title">
-            <div>1号门</div>
-            <h6>电动仿真器具</h6>
+            <div>{{item.code}}号门</div>
+            <h6>{{item.name}}</h6>
           </div>
           <div class="type">
-            <type :typeArr="type"></type>
+            <type :typeArr="item.type"></type>
           </div>
-          <p class="type_intru">它的模样没什么差别，而且更加漂亮功能也更加丰富。由于材质的问题，给女性多重关怀，更充分的情趣。</p>
+          <p class="type_intru">{{item.instruction}}</p>
           <div class="price">
-            <span><a>￥</a>128.90</span>
-            <div class="btn">加入购物车</div>
+            <span><a>￥</a>{{item.price}}</span>
+            <div class="join_cart">
+              <!--<a class="btn" style="display: block">加入购物车</a>-->
+              <!--加入购物车-->
+              <a class="btn" v-show="!item.countNum" style="display: block" @click="addCart">加入购物车</a>
+              <cart-control ref="cartControl" :item="item" v-show="item.countNum"></cart-control>
+            </div>
           </div>
         </div>
       </div>
       <h6 class="good_list widthAuto">其他商品</h6>
       <div class="widthAuto goods_content">
-        <goods></goods>
+        <goods :goodsList="goodsList"></goods>
       </div>
       <fooder></fooder>
     </div>
@@ -39,6 +44,7 @@ import 'swiper/dist/css/swiper.css'// 这里注意具体看使用的版本是否
 import Type from '@/components/common/type'
 import Goods from '@/components/common/goods'
 import Fooder from '@/components/common/food'
+import CartControl from '@/components/common/cartcontrol'
 export default {
   name: 'detail',
   data () {
@@ -51,11 +57,17 @@ export default {
         loop: true
       },
       swiperSlides: [
-        {url: require('../common/images/home_add@2x.png')},
-        {url: require('../common/images/home_label@2x.png')},
-        {url: require('../common/images/home_location@2x.png')}
+        {url: 'http://fuss10.elemecdn.com/f/49/27f26ed00c025b2200a9ccbb7e67ejpeg.jpeg?imageView2/1/w/750/h/750'},
+        {url: 'http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750'},
+        {url: 'http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750'}
       ],
-      type: [1, 2]
+      type: [],
+      item: {},
+      goodsList: [
+        {code: 4, name: '电动延时环01', instruction: '球体震动调节兴奋度', type: [1, 2], price: 188, url: 'http://fuss10.elemecdn.com/b/5f/b3b04c259d5ec9fa52e1856ee50dajpeg.jpeg?imageView2/1/w/114/h/114'},
+        {code: 5, name: '电动延时环02', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188, url: 'http://fuss10.elemecdn.com/b/9f/5e6c99c593cf65229225c5661bcdejpeg.jpeg?imageView2/1/w/114/h/114'},
+        {code: 6, name: '电动延时环03', instruction: '球体震动调节兴奋度', type: [1, 2, 3], price: 188, url: 'http://fuss10.elemecdn.com/6/54/f654985b4e185f06eb07f8fa2b2e8jpeg.jpeg?imageView2/1/w/114/h/114'}
+      ]
     }
   },
   computed: {
@@ -68,9 +80,26 @@ export default {
     swiperSlide,
     Type,
     Goods,
-    Fooder
+    Fooder,
+    CartControl
   },
   mounted () {
+    this.$nextTick(() => {
+      this.item = this.$route.query
+    })
+  },
+  watch: {
+    '$route.query.code': {
+      deep: true,
+      handler: function (newVal, oldVal) {
+        this.item = this.$route.query
+      }
+    }
+  },
+  methods: {
+    addCart () {
+      this.$refs.cartControl.increase(this.item.price, this.item.code - 1)
+    }
   }
 }
 </script>
@@ -79,6 +108,9 @@ export default {
   /*.detail{
     padding-top: 88px;
   }*/
+  img{
+    width:100%;
+  }
 .detail_header{
   width: 100%;
   height: 88px;
@@ -109,6 +141,7 @@ export default {
       div{
         width: 104px;
         height: 44px;
+        line-height: 44px;
         background: #5d98f9;
         font-size: 28px;
         text-align: center;
@@ -137,7 +170,7 @@ export default {
           font-size: 36px;
         }
       }
-      div{
+      .join_cart{
         width: 240px;
         height: 70px;
         font-size: 30px;
