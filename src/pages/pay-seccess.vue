@@ -17,7 +17,7 @@
         <span>￥132.00</span>
       </div>
     </div>
-    <div class="btn pay_sessect_btn">
+    <div class="btn pay_sessect_btn" @click="fhIndex">
         返回首页
     </div>
   </div>
@@ -26,7 +26,12 @@
 
 <script>
 export default {
-  name: 'pay-sessect'
+  name: 'pay-sessect',
+  methods: {
+    fhIndex () {
+      this.$router.push({path: '/'})
+    }
+  }
 }
 </script>
 

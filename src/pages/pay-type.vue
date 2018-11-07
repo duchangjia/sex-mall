@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="btn sure_btn">
+      <div class="btn sure_btn" @click="payResult">
         确定支付
       </div>
     </div>
@@ -56,6 +56,9 @@ export default {
     },
     typeBtnWX () {
       this.paySelect = 1
+    },
+    payResult () {
+      this.$router.push({path: 'pay-seccess'})
     }
   }
 }

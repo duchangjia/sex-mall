@@ -4,7 +4,7 @@
       <img src="http://fuss10.elemecdn.com/f/49/27f26ed00c025b2200a9ccbb7e67ejpeg.jpeg?imageView2/1/w/750/h/750" alt="">
     </div>
     <div class="fix_position box_shadow widthAuto">
-      <i class="icon iconfont icon-didian"></i>广州天河区明系小区89号
+      <i class="icon iconfont icon-didian"></i>广州天河区明系小区89号22
     </div>
     <h6 class="good_list widthAuto">商品列表</h6>
     <div class="widthAuto goods_content">
